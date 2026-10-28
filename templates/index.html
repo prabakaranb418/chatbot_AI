@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praba AI | Workspace</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">
+                <span></span><span></span><span></span>
+            </div>
+            <div>
+                <h2>praba<span>ai</span></h2>
+                <small>YOUR WORKSPACE</small>
+            </div>
+            <button class="mobile-close" id="closeSidebar">×</button>
+        </div>
+
+        <button class="new-chat" id="newChatBtn">
+            <span>＋</span> New conversation
+        </button>
+
+        <p class="section-label">WORKSPACE</p>
+
+        <button class="nav-item active" id="homeBtn">
+            <span>⌂</span> Overview
+        </button>
+
+        <button class="nav-item" id="historyBtn">
+            <span>◷</span> Recent conversations
+        </button>
+
+        <div class="history-heading">
+            <p class="section-label">YOUR HISTORY</p>
+            <button id="clearHistoryBtn">Clear</button>
+        </div>
+
+        <div class="history-list" id="historyList"></div>
+
+        <div class="sidebar-bottom">
+            <div class="private-note">
+                <span class="online-dot"></span>
+                <div>
+                    <strong>Private workspace</strong>
+                    <small>History saved in this browser</small>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">P</div>
+                <div>
+                    <strong>Praba AI</strong>
+                    <small>Local assistant</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main workspace -->
+    <main class="main-panel">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-btn" id="openSidebar">☰</button>
+                <div class="breadcrumb">
+                    Workspace <span>/</span>
+                    <strong id="pageTitle">Overview</strong>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <span class="connection">
+                    <i></i> Local model
+                </span>
+                <button class="about-btn" id="aboutBtn">About</button>
+            </div>
+        </header>
+
+        <section class="workspace">
+
+            <!-- Welcome dashboard -->
+            <section class="welcome" id="welcome">
+
+                <div class="eyebrow">
+                    <span></span> YOUR IDEAS, IN MOTION
+                </div>
+
+                <h1>
+                    A clearer way to<br>
+                    <span>get things done.</span>
+                </h1>
+
+                <p class="welcome-description">
+                    Think through ideas, solve problems, and move your
+                    work forward — all in one focused space.
+                </p>
+
+                <div class="quick-grid">
+
+                    <button class="quick-card"
+                            data-prompt="Help me create a step-by-step plan for my task.">
+                        <div class="quick-icon purple">↗</div>
+                        <strong>Plan something</strong>
+                        <p>Turn an idea into an action plan</p>
+                        <span class="card-arrow">↗</span>
+                    </button>
+
+                    <button class="quick-card"
+                            data-prompt="Explain a difficult topic in simple terms with an example.">
+                        <div class="quick-icon green">✳</div>
+                        <strong>Learn something</strong>
+                        <p>Understand a topic step by step</p>
+                        <span class="card-arrow">↗</span>
+                    </button>
+
+                    <button class="quick-card"
+                            data-prompt="Help me write a clear and professional message.">
+                        <div class="quick-icon orange">✎</div>
+                        <strong>Write better</strong>
+                        <p>Make your writing clear and polished</p>
+                        <span class="card-arrow">↗</span>
+                    </button>
+
+                    <button class="quick-card"
+                            data-prompt="Help me debug a programming problem.">
+                        <div class="quick-icon blue">⌘</div>
+                        <strong>Solve a problem</strong>
+                        <p>Work through a challenge</p>
+                        <span class="card-arrow">↗</span>
+                    </button>
+
+                </div>
+            </section>
+
+            <!-- Conversation area -->
+            <section class="conversation" id="conversation" hidden>
+
+                <div class="conversation-header">
+                    <div class="eyebrow">
+                        <span></span> CONVERSATION
+                    </div>
+                    <h2 id="conversationTitle">New conversation</h2>
+                    <p>Your ideas and answers, in one place.</p>
+                </div>
+
+                <div class="messages" id="messages"></div>
+
+            </section>
+
+            <!-- Message composer -->
+            <div class="composer-area">
+
+                <form class="composer" id="chatForm">
+
+                    <textarea
+                        id="messageInput"
+                        placeholder="Ask a question or explore an idea..."
+                        rows="1"
+                        aria-label="Type your message"
+                        required></textarea>
+
+                    <div class="composer-footer">
+                        <p>
+                            <span>✦</span>
+                            AI can make mistakes. Verify important information.
+                        </p>
+
+                        <button class="send-btn" id="sendBtn" type="submit">
+                            <span>Send</span>
+                            <b>↑</b>
+                        </button>
+                    </div>
+
+                </form>
+
+                <p class="bottom-caption">
+                    A focused workspace for your everyday thinking.
+                </p>
+
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- About dialog -->
+<div class="modal-overlay" id="aboutModal" hidden>
+    <div class="modal">
+        <button class="modal-close" id="closeAbout">×</button>
+
+        <div class="brand-logo">
+            <span></span><span></span><span></span>
+        </div>
+
+        <h2>A workspace built for focus.</h2>
+
+        <p>
+            Praba AI connects to your local Ollama model.
+            Your conversations are stored in this browser and
+            are not saved to a database by this application.
+        </p>
+
+        <div class="modal-info">
+            <span>Model</span>
+            <strong>smollm2:135m</strong>
+        </div>
+
+        <div class="modal-info">
+            <span>History</span>
+            <strong>Browser storage</strong>
+        </div>
+
+        <button class="modal-done" id="doneAbout">Got it</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
