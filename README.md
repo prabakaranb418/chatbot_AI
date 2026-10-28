@@ -1,4 +1,4 @@
-# AI Chatbox UI
+# AI Chatbot
 
 This UI is designed for the existing Flask API in `app.py`:
 - `GET /api/chats`
@@ -23,7 +23,7 @@ your_project/
 ## Run
 
 1. Copy `templates` and `static` into the same folder as `app.py`.
-2. Ensure MySQL is running and the `ai_chatbox` database exists.
+2. Ensure MySQL is running and the `ai_chatbot` database exists.
 3. Install dependencies in your active Python environment:
    `pip install flask requests mysql-connector-python`
 4. Ensure Ollama is running and the configured model is available:
